@@ -615,7 +615,7 @@ print "\n#{pronoun2.capitalize} proficiency bonus is +#{prof_bonus}."
 print "\n"
 
 
-#-- /*
+#-- */
 
 
 
@@ -1260,4 +1260,49 @@ print ("\n")
 
 
 #--
-/*
+*/
+
+
+
+using System;
+
+namespace Return
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string[] pronoun = { "he", "she", "they" };
+            // assigns the gender he, she, or they to the variable pronoun, which will later be called to pick names
+
+
+            string randomPronoun = Randomizer(pronoun);
+
+            Console.WriteLine(randomPronoun);
+
+
+
+
+
+        }
+        public static string Randomizer(string[] arrayToRandomize)
+        {
+            Random rand = new Random();
+
+            int index = rand.Next(arrayToRandomize.Length);
+
+            return arrayToRandomize[index];
+
+            //picks a string at random from the input string array. Used to pick things like pronouns, adjectives, etc at random
+
+        }
+    }
+}
+    
+    
+    
+
+     
+
+
