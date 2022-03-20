@@ -1277,16 +1277,56 @@ namespace Return
             // assigns the gender he, she, or they to the variable pronoun, which will later be called to pick names
 
 
-            string randomPronoun = Randomizer(pronoun);
+            string randomPronoun = StringRandomizer(pronoun);
 
             Console.WriteLine(randomPronoun);
 
+            string pronoun2;
+
+            if (randomPronoun.Contains("they"))
+            {
+                pronoun2 = "their";
+            }
+            else if (randomPronoun.Contains("she"))
+            {
+                pronoun2 = "her";
+            }
+            else
+            {
+                pronoun2 = "his";
+            }
+            // assigns his, her, their depending on the value in pronoun variable
+
+            Console.WriteLine(pronoun2);
+
+            string pronoun3;
+
+            if (randomPronoun.Contains("they"))
+            {
+                pronoun3 = "them";
+            }
+            else if (randomPronoun.Contains("she"))
+            {
+                pronoun3 = "her";
+            }
+            else
+            {
+                pronoun3 = "him";
+            }
+
+            // assigns him, her, them depending on the value in pronoun variable
+
+            Console.WriteLine(pronoun3);
 
 
-
+           /* switch(pronoun)
+            {
+                case pronoun
+            }
+           */
 
         }
-        public static string Randomizer(string[] arrayToRandomize)
+        public static string StringRandomizer(string[] arrayToRandomize)
         {
             Random rand = new Random();
 
