@@ -1275,12 +1275,7 @@ namespace Return
 
             string[] pronoun = { "he", "she", "they" };
             // assigns the gender he, she, or they to the variable pronoun, which will later be called to pick names
-
-
             string randomPronoun = StringRandomizer(pronoun);
-
-            Console.WriteLine(randomPronoun);
-
             string pronoun2;
 
             if (randomPronoun.Contains("they"))
@@ -1296,7 +1291,6 @@ namespace Return
                 pronoun2 = "his";
             }
             // assigns his, her, their depending on the value in pronoun variable
-            Console.WriteLine(pronoun2);
 
             string pronoun3;
 
@@ -1312,9 +1306,7 @@ namespace Return
             {
                 pronoun3 = "him";
             }
-
             // assigns him, her, them depending on the value in pronoun variable
-            Console.WriteLine(pronoun3);
 
             string isare;
 
@@ -1330,9 +1322,7 @@ namespace Return
 
             int raceNumber = NumberRandomizer(0, 10);
             // picks a number at random for use assigning a race from raceArray.
-
-            Console.WriteLine(raceNumber);
-
+  
             string[] raceArray = { "dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human", "tiefling" };
             int[,] raceStatArray = new int[,] {
                 //dragonborn
@@ -1354,13 +1344,11 @@ namespace Return
                 //tiefling
                 {0,0,0,1,0,2,30}
             };
-                                
+            // creates the stat block for each race, referenced heavily below;
 
             int statRoll = DiceRoll(1, 7);
 
-            Console.WriteLine(statRoll);
-
-            string race = raceArray[raceNumber];
+            string charRace = raceArray[raceNumber];
             int str = statRoll + raceStatArray[raceNumber, 0];
             double strMath = (str - 10) / 2;
             double strMod = Math.Floor(strMath);
@@ -1380,107 +1368,182 @@ namespace Return
             double chaMath = (cha - 10) / 2;
             double chaMod = Math.Floor(chaMath);
 
-            Console.WriteLine($"{race}, {str}, {strMod}, {dex}, {dexMod}, {chaMod}");
 
-           /* switch (raceNumber)
-                        {
-                            case 1:
-                                race = raceArray[raceNumber];
-                                str = statRoll + raceStatArray[raceNumber, 0];
-                                strMod = Math.Floor((str - 10) / 2);
-                                dex = statRoll + raceStatArray[raceNumber, 1];
-                                dexMod = Math.Floor((dex - 10) / 2);
-                                con = statRoll + raceStatArray[raceNumber, 2];
-                                conMod = Math.Floor((con - 10) / 2);
-                                intel = statRoll + raceStatArray[raceNumber, 3];
-                                intelMod = Math.Floor((intel - 10) / 2);
-                                wis = statRoll + raceStatArray[raceNumber, 4];
-                                wisMod = Math.Floor((wis - 10) / 2);
-                                cha = statRoll + raceStatArray[raceNumber, 5];
-                                chaMod = Math.Floor((cha - 10) / 2);
-                                break;
 
-                            //    int str = statRoll + race_array[race_number][1][0]
-                   // str_mod = (str - 10).div(2).floor
+            string[] firstNameArrayHumMal = {
+              "Anlow",
+              "Arando",
+              "Bram",
+              "Cale",
+              "Dalkon",
+              "Daylen",
+              "Dodd",
+              "Dungarth",
+              "Dyrk",
+              "Eandro",
+              "Falken",
+              "Feck",
+              "Fenton",
+              "Gryphero",
+              "Hagar",
+              "Jeras",
+              "Krynt",
+              "Lavant",
+              "Leyten",
+              "Madian",
+              "Malfier",
+              "Markus",
+              "Meklan",
+              "Namen",
+              "Navaren",
+              "Nerle",
+              "Nilus",
+              "Ningyan",
+              "Norris",
+              "Quentin",
+              "Semil",
+              "Sevenson",
+              "Steveren",
+              "Talfen",
+              "Tamond",
+              "Taran",
+              "Tavon",
+              "Tegan",
+              "Vanan",
+              "Vincent"
+            };
+            // the name array from which a human male name is picked
 
-                            case 2:
+            string firstNameHumMal = StringRandomizer(firstNameArrayHumMal);
+            // samples a name from firstNameArrayHumMal, because I can't figure out how to combine multiple arrays and then sample them.
 
-                                break;
+            string[] firstNameArrayHumFem = {
+            "Azura",
+            "Brey",
+            "Hallan",
+            "Kasaki",
+            "Lorelei",
+            "Mirabel",
+            "Pharana",
+            "Remora",
+            "Rosalyn",
+            "Sachil",
+            "Saidi",
+            "Tanika",
+            "Tura",
+            "Tylsa",
+            "Vencia",
+            "Xandrilla"
+            };
+            //the name array from which a human female name is picked
 
-                            case 3:
+            string firstNameHumFem = StringRandomizer(firstNameArrayHumFem);
+            //samples a name from first_name_array_hum_fem
 
-                                break;
+            string firstName;
+            string[] bothFirstNames = { firstNameHumFem, firstNameHumMal };
+            if (randomPronoun.Contains("they"))
+            { 
+                firstName = StringRandomizer(bothFirstNames); 
+            } 
+            else if (randomPronoun.Contains("she"))
+            {
+                firstName = firstNameHumFem;
+            }              
+            else
+            {
+                firstName = firstNameHumMal;
+            }
+            //determines if first name needs to be pulled from the male array, female array, or both.
 
-                            case 4:
+            string[] lastNameArrayHum = {
+            "Arkalis",
+            "Armanci",
+            "Bilger",
+            "Blackstrand",
+            "Brightwater",
+            "Carnavon",
+            "Caskajaro",
+            "Coldshore",
+            "Coyle",
+            "Cresthill",
+            "Cuttlescar",
+            "Daargen",
+            "Dalicarlia",
+            "Danamark",
+            "Donoghan",
+            "Drumwind",
+            "Dunhall",
+            "Ereghast",
+            "Falck",
+            "Fallenbridge",
+            "Faringray",
+            "Fletcher",
+            "Fryft",
+            "Goldrudder",
+            "Grantham",
+            "Graylock",
+            "Gullscream",
+            "Hindergrass",
+            "Iscalon",
+            "Kreel",
+            "Kroft",
+            "Lamoth",
+            "Leerstrom",
+            "Lynchfield",
+            "Moonridge",
+            "Netheridge",
+            "Oakenheart",
+            "Pyncion",
+            "Ratley",
+            "Redraven",
+            "Revenmar",
+            "Roxley",
+            "Sell",
+            "Seratolva",
+            "Shanks",
+            "Shattermast",
+            "Shaulfer",
+            "Silvergraft",
+            "Stavenger",
+            "Stormchapel",
+            "Strong",
+            "Swiller",
+            "Talandro",
+            "Targana",
+            "Towerfall",
+            "Umbermoor",
+            "Van Devries",
+            "Van Gandt",
+            "Van Hyden",
+            "Varcona",
+            "Varzand",
+            "Voortham",
+            "Vrye",
+            "Webb",
+            "Welfer",
+            "Wilxes",
+            "Wintermere",
+            "Wygarthe",
+            "Zatchet",
+            "Zethergyll"
+            };
+            // the name array from which a human last name is picked 
 
-                                break;
+            string lastName = StringRandomizer(lastNameArrayHum);
+            //samples a last name from the last_name_array
 
-                            case 5:
 
-                                break;
+            Console.WriteLine(pronoun3);
+            Console.WriteLine(randomPronoun);
+            Console.WriteLine(pronoun2);
+            Console.WriteLine(raceNumber);
+            Console.WriteLine(statRoll);
+            Console.WriteLine($"{charRace}, {str}, {strMod}, {dex}, {dexMod}, {chaMod}");
 
-                            case 6:
-
-                                break;
-
-                            case 7:
-
-                                break;
-
-                            case 8:
-
-                                break;
-
-                            default:
-
-                                break;
-                        }
-                */
-
+            Console.WriteLine($"{firstName} {lastName}");
                         
 
-           // charRace = raceArray[raceNumber];
-            //uses raceNumber to pick the appropriate race string from raceArray
-
-            /*
-
-                    def stat_roll
-
-                      six_sided_die = [1,2,3,4,5,6]
-                    roll_four = Array.new
-
-                      for i in 0..3
-                        roll_four << rand(1..6)
-                      end
-                      #replace the while loop referenced above, using a for loop in place of a while + if/else combo loop to achieve the same output - add four integers between 1-6 to the roll_four array
-                      roll_four.sort!
-                      roll_four.shift
-
-                      return roll_four.sum
-
-                    end
-                    # creates the 'stat_roll' funtion, which uses a 6-sided dice array to 'roll' 4 dice, then subtracts the lowest and sums the remaining, giving a number that can be used for each stat. Saves hella space.
-
-                    str = stat_roll + race_array[race_number][1][0]
-                    str_mod = (str-10).div(2).floor
-
-                    dex = stat_roll + race_array[race_number][1][1]
-                    dex_mod = (dex - 10).div(2).floor
-
-                    con = stat_roll + race_array[race_number][1][2]
-                    con_mod = (con - 10).div(2).floor
-
-                    int = stat_roll + race_array[race_number][1][3]
-                    int_mod = (int - 10).div(2).floor
-
-                    wis = stat_roll + race_array[race_number][1][4]
-                    wis_mod = (wis - 10).div(2).floor
-
-                    cha = stat_roll + race_array[race_number][1][5]
-                    cha_mod = (cha - 10).div(2).floor
-
-                    # The above variables do two things. The stat variable (ex. str) calls the function stat_roll, which runs the stat_roll function and assigns a number based on that function.  Saves hella space.
-                    */
 
         }
         public static string StringRandomizer(string[] arrayToRandomize)
