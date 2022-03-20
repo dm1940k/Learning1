@@ -1296,7 +1296,6 @@ namespace Return
                 pronoun2 = "his";
             }
             // assigns his, her, their depending on the value in pronoun variable
-
             Console.WriteLine(pronoun2);
 
             string pronoun3;
@@ -1315,15 +1314,147 @@ namespace Return
             }
 
             // assigns him, her, them depending on the value in pronoun variable
-
             Console.WriteLine(pronoun3);
 
+            string isare;
 
-           /* switch(pronoun)
+            if (randomPronoun.Contains("they"))
             {
-                case pronoun
+                isare = "are";
             }
-           */
+            else
+            {
+                isare = "is";
+            }
+            // assigns are or is, depending on the pronoun variable
+
+            int raceNumber = NumberRandomizer(0, 8);
+            // picks a number at random for use assigning a race from raceArray.
+
+            Console.WriteLine(raceNumber);
+
+            string[] raceArray = { "dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human", "tielfling" };
+            int[,] raceStatArray = new int[,] {
+                {2,0,0,0,0,1,30},
+                {0,0,3,0,0,0,25},
+                {0,2,0,0,0,0,30},
+                {0,0,0,2,0,0,25},
+                {0,0,0,0,0,2,30},
+                {0,2,0,0,0,0,25},
+                {2,0,1,0,0,0,30},
+                {1,1,1,1,1,1,30},
+                {0,0,0,1,0,2,30}
+            };
+
+            int str;
+            int dex;
+            int con;
+            int intel;
+            int wis;
+            int cha;
+            /*
+                        charRace = 
+
+
+                        switch (raceNumber)
+                        {
+                            case 1:
+                                race
+                                str = statRoll + 2;
+                                strMod = 
+                                dex = statRoll + 0;
+                                dexMod =
+                                con = statRoll + 0;
+                                conMod =
+                                intel = statRoll + 0;
+                                intelMod =
+                                wis = statRoll + 0;
+                                wisMod =
+                                cha = statRoll + 1;
+                                chaMod = 
+                                break;
+
+                                int str = statRoll + race_array[race_number][1][0]
+                    str_mod = (str - 10).div(2).floor
+
+                            case 2:
+
+                                break;
+
+                            case 3:
+
+                                break;
+
+                            case 4:
+
+                                break;
+
+                            case 5:
+
+                                break;
+
+                            case 6:
+
+                                break;
+
+                            case 7:
+
+                                break;
+
+                            case 8:
+
+                                break;
+
+                            default:
+
+                                break;
+                        }
+
+
+                        }
+
+                    /*
+
+                    char_race = race_array[race_number][0]
+                    # samples a race from the race_array
+
+                    def stat_roll
+
+                      six_sided_die = [1,2,3,4,5,6]
+                    roll_four = Array.new
+
+                      for i in 0..3
+                        roll_four << rand(1..6)
+                      end
+                      #replace the while loop referenced above, using a for loop in place of a while + if/else combo loop to achieve the same output - add four integers between 1-6 to the roll_four array
+                      roll_four.sort!
+                      roll_four.shift
+
+                      return roll_four.sum
+
+                    end
+                    # creates the 'stat_roll' funtion, which uses a 6-sided dice array to 'roll' 4 dice, then subtracts the lowest and sums the remaining, giving a number that can be used for each stat. Saves hella space.
+
+                    str = stat_roll + race_array[race_number][1][0]
+                    str_mod = (str-10).div(2).floor
+
+                    dex = stat_roll + race_array[race_number][1][1]
+                    dex_mod = (dex - 10).div(2).floor
+
+                    con = stat_roll + race_array[race_number][1][2]
+                    con_mod = (con - 10).div(2).floor
+
+                    int = stat_roll + race_array[race_number][1][3]
+                    int_mod = (int - 10).div(2).floor
+
+                    wis = stat_roll + race_array[race_number][1][4]
+                    wis_mod = (wis - 10).div(2).floor
+
+                    cha = stat_roll + race_array[race_number][1][5]
+                    cha_mod = (cha - 10).div(2).floor
+
+                    # The above variables do two things. The stat variable (ex. str) calls the function stat_roll, which runs the stat_roll function and assigns a number based on that function.  Saves hella space.
+                    */
 
         }
         public static string StringRandomizer(string[] arrayToRandomize)
@@ -1336,6 +1467,16 @@ namespace Return
 
             //picks a string at random from the input string array. Used to pick things like pronouns, adjectives, etc at random
 
+        }
+        public static int NumberRandomizer(int numToRandomize1, int numToRandomize2)
+        {
+            Random rand = new Random();
+
+            int randomNumber = rand.Next(numToRandomize1, numToRandomize2);
+
+            return randomNumber;
+
+            //picks an interger at random from a provided range.
         }
     }
 }
