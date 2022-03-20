@@ -1328,54 +1328,80 @@ namespace Return
             }
             // assigns are or is, depending on the pronoun variable
 
-            int raceNumber = NumberRandomizer(0, 8);
+            int raceNumber = NumberRandomizer(0, 10);
             // picks a number at random for use assigning a race from raceArray.
 
             Console.WriteLine(raceNumber);
 
-            string[] raceArray = { "dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human", "tielfling" };
+            string[] raceArray = { "dragonborn", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc", "human", "tiefling" };
             int[,] raceStatArray = new int[,] {
+                //dragonborn
                 {2,0,0,0,0,1,30},
+                //dwarf
                 {0,0,3,0,0,0,25},
+                //elf
                 {0,2,0,0,0,0,30},
+                //gnome
                 {0,0,0,2,0,0,25},
+                //half-elf
                 {0,0,0,0,0,2,30},
+                //halfling
                 {0,2,0,0,0,0,25},
+                //half-orc
                 {2,0,1,0,0,0,30},
+                //human
                 {1,1,1,1,1,1,30},
+                //tiefling
                 {0,0,0,1,0,2,30}
             };
+                                
 
-            int str;
-            int dex;
-            int con;
-            int intel;
-            int wis;
-            int cha;
-            /*
-                        charRace = 
+            int statRoll = DiceRoll(1, 7);
 
+            Console.WriteLine(statRoll);
 
-                        switch (raceNumber)
+            string race = raceArray[raceNumber];
+            int str = statRoll + raceStatArray[raceNumber, 0];
+            double strMath = (str - 10) / 2;
+            double strMod = Math.Floor(strMath);
+            int dex = statRoll + raceStatArray[raceNumber, 1];
+            double dexMath = (dex - 10) / 2;
+            double dexMod = Math.Floor(dexMath);
+            int con = statRoll + raceStatArray[raceNumber, 2];
+            double conMath = (con - 10) / 2;
+            double conMod = Math.Floor(conMath);
+            int intel = statRoll + raceStatArray[raceNumber, 3];
+            double intelMath = (intel - 10) / 2;
+            double intelMod = Math.Floor(intelMath);
+            int wis = statRoll + raceStatArray[raceNumber, 4];
+            double wisMath = (wis - 10) / 2;
+            double wisMod = Math.Floor(wisMath);
+            int cha = statRoll + raceStatArray[raceNumber, 5];
+            double chaMath = (cha - 10) / 2;
+            double chaMod = Math.Floor(chaMath);
+
+            Console.WriteLine($"{race}, {str}, {strMod}, {dex}, {dexMod}, {chaMod}");
+
+           /* switch (raceNumber)
                         {
                             case 1:
-                                race
-                                str = statRoll + 2;
-                                strMod = 
-                                dex = statRoll + 0;
-                                dexMod =
-                                con = statRoll + 0;
-                                conMod =
-                                intel = statRoll + 0;
-                                intelMod =
-                                wis = statRoll + 0;
-                                wisMod =
-                                cha = statRoll + 1;
-                                chaMod = 
+                                race = raceArray[raceNumber];
+                                str = statRoll + raceStatArray[raceNumber, 0];
+                                strMod = Math.Floor((str - 10) / 2);
+                                dex = statRoll + raceStatArray[raceNumber, 1];
+                                dexMod = Math.Floor((dex - 10) / 2);
+                                con = statRoll + raceStatArray[raceNumber, 2];
+                                conMod = Math.Floor((con - 10) / 2);
+                                intel = statRoll + raceStatArray[raceNumber, 3];
+                                intelMod = Math.Floor((intel - 10) / 2);
+                                wis = statRoll + raceStatArray[raceNumber, 4];
+                                wisMod = Math.Floor((wis - 10) / 2);
+                                cha = statRoll + raceStatArray[raceNumber, 5];
+                                chaMod = Math.Floor((cha - 10) / 2);
                                 break;
 
-                                int str = statRoll + race_array[race_number][1][0]
-                    str_mod = (str - 10).div(2).floor
+                            //    int str = statRoll + race_array[race_number][1][0]
+                   // str_mod = (str - 10).div(2).floor
 
                             case 2:
 
@@ -1409,14 +1435,14 @@ namespace Return
 
                                 break;
                         }
+                */
 
+                        
 
-                        }
+           // charRace = raceArray[raceNumber];
+            //uses raceNumber to pick the appropriate race string from raceArray
 
-                    /*
-
-                    char_race = race_array[race_number][0]
-                    # samples a race from the race_array
+            /*
 
                     def stat_roll
 
@@ -1478,6 +1504,22 @@ namespace Return
 
             //picks an interger at random from a provided range.
         }
+        public static int DiceRoll(int bottomOfRange, int topOfRange)
+        {
+
+		Random rnd = new Random();
+        List<int> diceRolls = new List<int>();
+        for (int i = 0; i<4; i++)
+            //rolls picks 4 ("i<4") numbers at random based on the int range in the following ".Next(int, int)"
+            {
+                diceRolls.Add(rnd.Next(bottomOfRange,topOfRange));
+            }
+            diceRolls.Sort();
+            diceRolls.RemoveAt(0);
+            return diceRolls.Sum();
+        }
+        
+        
     }
 }
     
